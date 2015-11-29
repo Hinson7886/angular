@@ -1,14 +1,97 @@
-<html ng-app="myModule">
+<html>
 <head>
 	<script src="scripts/angular.js"></script>
 	<script src="scripts/scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
-<body>
+<body ng-app="myModule">
 	<div ng-controller="myController">
-		{{ message }}
-		<p>
-			{{ message }}
-		</p>
+		<h1>2 Way Data Binding</h1>
+		<table>
+			<tr>
+				<td>First Name</td>
+				<td>
+					<input type="text" ng-model="employee.firstName"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td>
+					<input type="text" ng-model="employee.lastName"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<input type="text" ng-model="employee.gender"/>
+				</td>
+
+			</tr>
+		</table>
+		<br>
+		<table>
+			<tr>
+				<td>First Name</td>
+				<td>
+					{{ employee.firstName }}
+				</td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td>
+					{{ employee.lastName }}
+				</td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					{{ employee.gender }}
+				</td>
+
+			</tr>
+		</table>
+		<br>
+		<table>
+			<thead>
+				<tr>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Gender</th>
+					<th>Salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employee in employees">
+					<td>{{ employee.firstName }}</td>
+					<td>{{ employee.lastName }}</td>
+					<td>{{ employee.gender }}</td>
+					<td>{{ employee.salary }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Likes</th>
+					<th>Dislikes</th>
+					<th>Like/Dislike</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="technology in technologies">
+					<td>{{ technology.name }}</td>
+					<td>{{ technology.likes }}</td>
+					<td>{{ technology.dislikes }}</td>
+					<td>
+					<input type="button" value="Like" ng-click="incrementLikes(technology)">
+					<input type="button" value="Dislike" ng-click="incrementDislikes(technology)">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
 	</div>
 
 </body>
